@@ -1,0 +1,121 @@
+@import '../styles/variables';
+
+.habit-statistics-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+}
+
+.habit-statistics-modal-content {
+  background-color: $background-light;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 700px; // Adjust as needed, image looks quite wide
+  position: relative;
+  color: $color-text-primary;
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: $color-text-dark; // Darker text for title as in image
+      margin: 0;
+    }
+
+    .close-button {
+      background: none;
+      border: none;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: $color-text-secondary;
+      cursor: pointer;
+      padding: 0 5px;
+      line-height: 1;
+
+      &:hover {
+        color: $color-text-primary;
+      }
+    }
+  }
+
+  .modal-body {
+    .stats-summary {
+      display: flex;
+      justify-content: space-around;
+      gap: 15px;
+      margin-bottom: 30px;
+
+      .stat-card {
+        background-color: lighten($color-accent-light, 5%); // Very light green from image
+        border-radius: 8px;
+        padding: 15px 20px;
+        text-align: center;
+        flex: 1;
+        min-width: 120px;
+
+        .stat-value {
+          display: block;
+          font-size: 2.2rem;
+          font-weight: 700;
+          color: $color-text-dark; // Darker text for numbers
+          margin-bottom: 5px;
+        }
+
+        .stat-label {
+          font-size: 0.9rem;
+          color: $color-text-secondary-dark; // Slightly darker secondary text
+        }
+      }
+    }
+
+    .chart-container {
+      height: 300px; // Adjust as needed
+      margin-bottom: 10px;
+      background-color: $background-light; // Ensure chart bg is clean
+      border-radius: 8px;
+      // padding: 10px;
+      // border: 1px solid $color-border; // Optional border
+    }
+
+    .chart-footer-text {
+      text-align: center;
+      font-size: 0.9rem;
+      color: $color-text-secondary;
+      margin-top: 15px;
+    }
+  }
+}
+
+// Responsive adjustments if needed
+@media (max-width: 768px) {
+  .habit-statistics-modal-content {
+    padding: 20px;
+    .modal-header h2 {
+      font-size: 1.5rem;
+    }
+    .stats-summary {
+      flex-direction: column;
+      .stat-card {
+        margin-bottom: 10px;
+      }
+    }
+    .chart-container {
+      height: 250px;
+    }
+  }
+}

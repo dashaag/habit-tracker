@@ -1,0 +1,47 @@
+// Color Palette for HabitFlow
+$primary-color: #7ea07a; // Muted Sage Green
+$secondary-color: #E0E0E0; // Light Gray for borders/dividers
+$color-accent-light: lighten($primary-color, 25%); // Light sage green for accents (e.g., stat cards)
+
+$background-color: #F7F9F7; // Very Light Grey-Green
+$card-background-color: #FFFFFF; // White
+
+$text-dark: #333333; // For main headings
+$text-medium: #555555; // For subheadings, labels
+$text-light: #777777; // For placeholder text, less important info
+$text-link-color: $primary-color; // For links like "Forgot password?"
+
+// Aliases/extensions for specific component theming
+$color-text-primary: $text-medium;         // General primary text (e.g., modal content)
+$color-text-dark: $text-dark;             // Darker text (e.g., modal titles, stat values)
+$color-text-secondary: $text-light;       // Secondary text (e.g., close button, chart footer)
+$color-text-secondary-dark: $text-medium; // Darker secondary text (e.g., stat labels)
+
+$background-light: $card-background-color;      // White, for general light backgrounds
+$background-light-hover: #f0f0f0;           // Very light grey for hover states
+$border-color-light: $secondary-color;         // Light gray for borders
+$color-border: $border-color-light;       // General border color alias
+
+$error-color: #d9534f; // For error messages
+
+$input-border-color: #DDDDDD;
+$input-focus-border-color: $primary-color;
+$input-icon-color: #AAAAAA;
+
+$button-text-color: #333333;
+$button-white-text-color: #ffffff;
+$button-hover-background-color: darken($primary-color, 5%);
+
+// Typography
+$font-family-sans-serif: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+// Spacing
+$spacing-unit: 8px;
+
+// Borders
+$border-radius-small: 4px;
+$border-radius-medium: 12px;
+
+// Box Shadow
+$box-shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
+$box-shadow-medium: 0 6px 20px rgba(0, 0, 0, 0.1);

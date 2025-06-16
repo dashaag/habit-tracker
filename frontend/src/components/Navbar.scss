@@ -1,0 +1,91 @@
+@import '../styles/variables';
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 0 ($spacing-unit * 3); // 0 top/bottom, 24px left/right
+  background-color: $card-background-color; // White background
+  border-bottom: 1px solid $secondary-color; // Light gray border
+  font-family: $font-family-sans-serif;
+  box-sizing: border-box;
+
+  .navbar-brand {
+    .navbar-item { // This is the "HabitTracker" link
+      font-weight: 700; // Bold
+      font-size: 22px; // Prominent size
+      color: $primary-color; // App's primary color
+      text-decoration: none;
+      &:hover {
+        color: darken($primary-color, 10%);
+      }
+    }
+  }
+
+  .navbar-menu {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-end {
+    display: flex;
+    align-items: center;
+    gap: $spacing-unit * 1.5; // Space between items in navbar-end (e.g., buttons)
+  }
+
+  // General style for items that are not buttons (e.g., text links if any)
+  .navbar-item {
+    color: $text-medium;
+    text-decoration: none;
+    padding: ($spacing-unit * 0.75) ($spacing-unit * 1.5); // 6px 12px
+    border-radius: $border-radius-small;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+    &:not(.button) { // Styles for non-button navbar items
+        &:hover {
+            color: $text-dark;
+            background-color: lighten($background-color, 2%);
+        }
+    }
+  }
+
+  // Styling for all buttons within the navbar
+  .navbar-item.button {
+    padding: ($spacing-unit * 0.75) ($spacing-unit * 2); // 6px 16px, slightly more horizontal padding for buttons
+    border-radius: $border-radius-small;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5; // Ensure text is centered vertically
+    text-decoration: none; // Remove underline from Link components styled as buttons
+    display: inline-flex; // For proper alignment if icons are added
+    align-items: center;
+    justify-content: center;
+
+    // Specific style for "Logout" and "Login" buttons (previously .is-light)
+    &.is-light {
+      background-color: $card-background-color; // White
+      border-color: $input-border-color; // Subtle border
+      color: $text-medium;
+      &:hover {
+        background-color: lighten($background-color, 2%); // Very light grey-green hover
+        border-color: darken($input-border-color, 10%);
+        color: $text-dark;
+      }
+    }
+
+    // Specific style for "Sign Up" button (previously .is-primary)
+    // Let's make this a primary action button style
+    &.is-primary {
+      background-color: $primary-color;
+      border-color: $primary-color;
+      color: $button-text-color; // Use the defined button text color
+      &:hover {
+        background-color: $button-hover-background-color;
+        border-color: $button-hover-background-color;
+      }
+    }
+  }
+}

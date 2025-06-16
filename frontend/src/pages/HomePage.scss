@@ -1,0 +1,124 @@
+@import '../styles/variables';
+
+// Placeholder colors from image - consider adding to _variables.scss
+$light-green-bg: #f0f5f0; // Very light green for overall page or header area
+$button-green: #ddeedd; // Muted green for Add New Habit button
+$button-text-color: #333;
+$card-white-bg: #ffffff;
+$soft-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+.home-page {
+  background-color: $light-green-bg; // Or a very light off-white like #f9f9f9
+  display: flex;
+  width: 100%;
+  overflow: auto;
+  flex-direction: column;
+  align-items: center;
+
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-unit * 3;
+    width: 100%;
+    max-width: 700px; // Max width for header content
+  }
+
+  &__main-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: $text-dark;
+    margin-bottom: $spacing-unit * 0.5;
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    color: $text-medium;
+    margin-bottom: $spacing-unit * 2.5;
+  }
+
+  &__add-habit-button {
+    background-color: $button-green;
+    color: $button-text-color;
+    border: none;
+    padding: ($spacing-unit * 1.5) ($spacing-unit * 2.5);
+    border-radius: $border-radius-medium;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-unit;
+    box-shadow: $box-shadow-light;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      background-color: darken($button-green, 5%);
+      box-shadow: $box-shadow-medium;
+    }
+
+    .icon {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+  .category-section {
+    background-color: $card-white-bg;
+    border-radius: $border-radius-medium;
+    padding: ($spacing-unit * 2.5);
+    margin-bottom: $spacing-unit * 3;
+    box-shadow: $soft-shadow;
+    width: 100%;
+    max-width: 700px; // Consistent max width for content blocks
+
+    &__title {
+      font-size: 20px;
+      font-weight: 600;
+      color: $text-dark;
+      margin-bottom: $spacing-unit * 2;
+    }
+  }
+
+  .habits-container {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-unit * 1.5; // Space between habit cards
+  }
+
+  // States: Loading, Error, No Habits
+  .loading-state,
+  .error-state,
+  .no-habits-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: $spacing-unit * 4;
+    width: 100%;
+    max-width: 700px;
+    margin-top: $spacing-unit * 2;
+  }
+  
+  .loading-message,
+  .error-message,
+  .no-habits-message {
+    font-size: 18px;
+    color: $text-medium;
+  }
+
+  .error-message {
+    color: $error-color;
+    background-color: lighten($error-color, 40%);
+    padding: $spacing-unit * 2;
+    border-radius: $border-radius-small;
+  }
+
+  .no-habits-message {
+    // Style for the message when no habits are present within the main content flow
+    padding: $spacing-unit * 2; // Similar to error message padding
+    // Optionally, add a background or border if desired for this state
+    // background-color: lighten($text-light, 5%);
+    // border: 1px dashed $text-light;
+    // border-radius: $border-radius-small;
+  }
+}

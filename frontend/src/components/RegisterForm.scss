@@ -1,0 +1,186 @@
+@import '../styles/variables';
+
+.login-form { // Using .login-form as RegisterForm.jsx now uses these classes
+  background-color: $card-background-color;
+  padding: ($spacing-unit * 3);
+  border-radius: $border-radius-medium;
+  box-shadow: $box-shadow-medium;
+  width: 100%;
+  max-width: 400px; 
+  text-align: center;
+
+  &__logo-container {
+    margin-bottom: ($spacing-unit * 1.5);
+    display: flex;
+    justify-content: center;
+  }
+
+  &__logo-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 14px solid $primary-color; 
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    color: $text-dark;
+    margin-bottom: $spacing-unit;
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    color: $text-medium;
+    margin-bottom: ($spacing-unit * 2);
+  }
+
+  .form-group {
+    margin-bottom: ($spacing-unit * 2.5);
+    text-align: left;
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: $text-medium;
+      margin-bottom: $spacing-unit;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .input-icon {
+        position: absolute;
+        left: ($spacing-unit * 1.5);
+        color: $input-icon-color;
+        font-size: 16px; 
+      }
+
+      input[type='email'],
+      input[type='password'],
+      input[type='text'] {
+        width: 100%;
+        padding: ($spacing-unit * 1.5) ($spacing-unit * 1.5) ($spacing-unit * 1.5) ($spacing-unit * 5); 
+        border: 1px solid $input-border-color;
+        border-radius: $border-radius-small;
+        font-size: 14px;
+        color: $text-dark;
+        background-color: $card-background-color; 
+
+        &:focus {
+          outline: none;
+          border-color: $input-focus-border-color;
+          box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+        }
+
+        &::placeholder {
+          color: $text-light;
+        }
+      }
+
+      .password-toggle-icon {
+        position: absolute;
+        right: ($spacing-unit * 1.5);
+        color: $input-icon-color;
+        cursor: pointer;
+        font-size: 16px; 
+      }
+    }
+  }
+
+  // Note: The __options class (remember me, forgot password) is not used in RegisterForm.jsx
+  // but keeping it here won't cause issues if RegisterForm.scss is a direct copy.
+  &__options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: ($spacing-unit * 3);
+    font-size: 13px;
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+
+      input[type='checkbox'] {
+        margin-right: $spacing-unit * 0.75;
+      }
+      label {
+        color: $text-medium;
+        font-weight: normal; 
+      }
+    }
+
+    .forgot-password {
+      a {
+        color: $text-link-color;
+        text-decoration: none;
+        font-weight: 600;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  &__submit-btn {
+    width: 100%;
+    padding: ($spacing-unit * 1.5) ($spacing-unit * 2); 
+    background-color: $primary-color;
+    color: $button-white-text-color;
+    border: none;
+    border-radius: $border-radius-small;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-unit;
+
+    &:hover {
+      background-color: $button-hover-background-color;
+    }
+
+    &:disabled {
+      background-color: lighten($primary-color, 15%);
+      cursor: not-allowed;
+    }
+
+    .btn-icon {
+      font-size: 18px;
+    }
+  }
+
+  .error-message {
+      color: $error-color;
+      background-color: lighten($error-color, 40%);
+      padding: 10px;
+      border-radius: $border-radius-small;
+      margin-bottom: 15px;
+      font-size: 14px;
+      text-align: center;
+  }
+
+  // This class is used for both "Register" on Login page and "Sign In" on Register page
+  &__register-link { 
+    margin-top: ($spacing-unit * 2);
+    font-size: 14px;
+    color: $text-medium;
+
+    a {
+      color: $text-link-color;
+      text-decoration: none;
+      font-weight: 600;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

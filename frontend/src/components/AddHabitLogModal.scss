@@ -1,0 +1,165 @@
+@import '../styles/variables';
+
+// Placeholder from HomePage.scss, consider moving to _variables.scss if widely used
+$button-green: #ddeedd; // Muted green for Add Completion button
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6); // Slightly darker overlay
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: $spacing-unit * 2;
+}
+
+.modal-content {
+  background-color: $card-background-color;
+  padding: ($spacing-unit * 3) ($spacing-unit * 3.5);
+  border-radius: $border-radius-medium; // 12px from variables
+  box-shadow: $box-shadow-light; // Soft shadow from variables
+  width: 100%;
+  max-width: 420px; // Slightly wider for better spacing
+  position: relative;
+  font-family: $font-family-sans-serif;
+
+  .modal-close-button {
+    position: absolute;
+    top: $spacing-unit * 2;
+    right: $spacing-unit * 2.5;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: $text-light;
+    cursor: pointer;
+    padding: $spacing-unit * 0.5;
+    line-height: 1;
+
+    &:hover {
+      color: $text-dark;
+    }
+  }
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: $spacing-unit * 3;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: $text-dark;
+    text-align: left;
+  }
+
+  .form-group {
+    margin-bottom: $spacing-unit * 2.5;
+
+    label {
+      display: block;
+      margin-bottom: $spacing-unit;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: $text-medium;
+    }
+
+    .input-with-icon {
+      display: flex;
+      align-items: center;
+      border: 1px solid $input-border-color;
+      border-radius: $border-radius-small; // 4px
+      padding: 0 $spacing-unit * 1.5;
+      background-color: $card-background-color; // Ensure it's white if page bg is different
+
+      &:focus-within {
+        border-color: $input-focus-border-color;
+        box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+      }
+
+      .input-icon {
+        margin-right: $spacing-unit * 1.25;
+        color: $text-light;
+        font-size: 1.2rem; // Adjust icon size as needed
+      }
+
+      input[type="date"],
+      input[type="time"] {
+        flex-grow: 1;
+        padding: ($spacing-unit * 1.25) 0;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        font-family: $font-family-sans-serif;
+        font-size: 1rem;
+        color: $text-dark;
+
+        // Basic styling to remove default browser appearance if possible
+        &::-webkit-calendar-picker-indicator,
+        &::-webkit-inner-spin-button,
+        &::-webkit-clear-button {
+          display: none;
+          -webkit-appearance: none;
+        }
+      }
+    }
+  }
+
+  .error-message {
+    color: $error-color;
+    margin-bottom: $spacing-unit * 2;
+    font-size: 0.9em;
+    text-align: left;
+  }
+
+  .modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $spacing-unit * 1.5;
+    margin-top: $spacing-unit * 3.5;
+
+    .button {
+      padding: ($spacing-unit * 1.25) ($spacing-unit * 2.5);
+      border-radius: $border-radius-small; // 4px
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+
+      &--cancel {
+        background-color: $card-background-color;
+        color: $text-medium;
+        border-color: $secondary-color; // Light gray border
+
+        &:hover {
+          background-color: darken($card-background-color, 5%);
+          border-color: darken($secondary-color, 10%);
+        }
+      }
+
+      &--primary {
+        background-color: $button-green; // Using placeholder green
+        color: $text-dark; // Dark text on light green button
+        border-color: $button-green;
+
+        &:hover {
+          background-color: darken($button-green, 5%);
+          border-color: darken($button-green, 5%);
+        }
+
+        &:disabled {
+          background-color: lighten($button-green, 10%);
+          border-color: lighten($button-green, 10%);
+          color: $text-light;
+          cursor: not-allowed;
+        }
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+    }
+  }
+}

@@ -1,0 +1,155 @@
+@import '../styles/variables';
+
+.modal-content {
+  max-width: 500px;
+}
+
+.add-habit-modal {
+  .add-habit-form {
+    height: 500px;
+    width: 95%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 40px;
+    padding-left: 5px;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input[type='text'],
+    input[type='number'],
+    input[type='time'],
+    select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+
+      &:focus {
+        outline: none;
+        border-color: $input-focus-border-color;
+      }
+    }
+
+    .toggle-category-button {
+      background: none;
+      border: none;
+      color: $text-link-color;
+      cursor: pointer;
+      font-size: 0.9rem;
+      text-decoration: underline;
+      padding: 0.25rem 0;
+      margin-top: 0.5rem;
+      display: inline-block;
+
+      &:hover {
+        color: darken($text-link-color, 10%);
+      }
+    }
+
+    .icon-selector, .color-selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .icon-option, .color-option {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: all 0.2s ease-in-out;
+      background-color: #f0f0f0;
+
+      &.selected {
+        border-color: $primary-color;
+        transform: scale(1.1);
+      }
+    }
+
+    .color-option {
+      &.selected {
+        box-shadow: 0 0 0 2px #fff, 0 0 0 4px $primary-color;
+      }
+    }
+
+    .frequency-group select {
+      margin-top: 0.5rem;
+    }
+
+
+
+    .time-pickers-group {
+      .form-group.time-picker-item { // Each time input is wrapped in a .form-group
+        margin-bottom: 0.75rem; // Tighter spacing for multiple time inputs
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .days-selector-group {
+      .days-checkboxes {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+      }
+
+      .day-checkbox-label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        font-size: 0.9rem;
+
+        input[type='checkbox'] {
+          appearance: none;
+          width: 36px;
+          height: 36px;
+          border: 2px solid $input-border-color;
+          border-radius: 50%;
+          margin-bottom: 0.25rem;
+          position: relative;
+          transition: all 0.2s;
+
+          &:checked {
+            background-color: $primary-color;
+            border-color: $primary-color;
+
+            & + span {
+              color: $primary-color;
+              font-weight: 700;
+            }
+          }
+        }
+
+        span {
+          transition: color 0.2s;
+        }
+      }
+    }
+  }
+
+  .modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+}

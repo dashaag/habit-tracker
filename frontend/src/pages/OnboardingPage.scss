@@ -1,0 +1,302 @@
+@import '../styles/variables';
+
+// Copied from LoginPage.scss for consistent page structure
+.onboarding-page {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center; // Horizontal centering
+  justify-content: center; // Vertical centering if content is shorter than height
+  overflow-y: auto; // Allow internal scroll if content overflows 100vh
+  background-color: $background-color;
+  font-family: $font-family-sans-serif;
+  padding: ($spacing-unit * 1) 0; // Reduced page padding (8px top/bottom)
+
+  &__header {
+    text-align: center;
+    margin-bottom: ($spacing-unit * 2); // Reduced (16px)
+  }
+
+  &__title {
+    font-size: 40px;
+    font-weight: 700;
+    color: $text-dark;
+    margin-top: $spacing-unit * 2; // Reduced (16px)
+    margin-bottom: $spacing-unit;
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    color: $text-medium;
+  }
+}
+
+.onboarding-card {
+  background-color: $card-background-color;
+  padding: ($spacing-unit * 3) ($spacing-unit * 4); // More horizontal padding
+  border-radius: $border-radius-medium;
+  box-shadow: $box-shadow-medium;
+  width: 100%;
+  max-width: 550px; // Onboarding content might need more space
+  text-align: left; // Default text align to left for content inside
+  margin-bottom: ($spacing-unit * 2);
+
+  &__step-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: $text-dark;
+    margin-bottom: $spacing-unit;
+    text-align: center;
+  }
+
+  &__step-description {
+    font-size: 14px;
+    color: $text-medium;
+    margin-bottom: ($spacing-unit * 3);
+    text-align: center;
+  }
+
+  &__current-step-content {
+    margin-bottom: ($spacing-unit * 3);
+  }
+
+  .form-group {
+    margin-bottom: ($spacing-unit * 2.5);
+    text-align: left;
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: $text-medium;
+      margin-bottom: $spacing-unit * 0.75;
+    }
+
+    input[type='text'],
+    input[type='number'],
+    select,
+    input[type='time'] {
+      width: 100%;
+      padding: ($spacing-unit * 1.25) ($spacing-unit * 1.5);
+      border: 1px solid $input-border-color;
+      border-radius: $border-radius-small;
+      font-size: 14px;
+      color: $text-dark;
+      background-color: $card-background-color;
+      box-sizing: border-box;
+      transition: border-color 0.2s, box-shadow 0.2s;
+
+      &:focus {
+        outline: none;
+        border-color: $input-focus-border-color;
+        box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+      }
+
+      &::placeholder {
+        color: $text-light;
+      }
+
+      &:disabled {
+        background-color: lighten($input-border-color, 5%);
+        cursor: not-allowed;
+      }
+    }
+    
+    select {
+      // Consider custom arrow or appearance for selects if needed later
+      // For now, it inherits text input styles which is a good base
+      appearance: none; // Basic reset, might need more for full custom select
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D'10'%20height%3D'5'%20viewBox%3D'0%200%2010%205'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cpath%20d%3D'M0%200L5%205L10%200H0Z'%20fill%3D'%23AAAAAA'%2F%3E%3C%2Fsvg%3E");
+      background-repeat: no-repeat;
+      background-position: right ($spacing-unit * 1.5) center;
+      padding-right: ($spacing-unit * 4); // Make space for arrow
+    }
+  }
+  
+
+  .category-name-group {
+    display: flex;
+    align-items: center;
+    gap: $spacing-unit * 1.5;
+
+    .color-picker-container,
+    .emoji-picker-container {
+      flex-shrink: 0;
+    }
+
+    input[type='text'] {
+      flex-grow: 1;
+    }
+  }
+
+  .color-picker-container {
+    position: relative;
+    .color-swatch {
+      width: 38px;
+      height: 38px;
+      border-radius: $border-radius-small;
+      border: 1px solid $input-border-color;
+      cursor: pointer;
+      background-clip: padding-box;
+      transition: border-color 0.2s;
+      &:hover {
+        border-color: darken($input-border-color, 15%);
+      }
+    }
+    .color-picker-popover {
+      position: absolute;
+      z-index: 100;
+      bottom: calc(100% + #{$spacing-unit});
+      left: 0;
+      .color-picker-cover {
+        position: fixed;
+        top: 0px; right: 0px; bottom: 0px; left: 0px;
+      }
+    }
+  }
+
+  .emoji-picker-container {
+    position: relative;
+    .emoji-button {
+      font-size: 20px;
+      padding: ($spacing-unit * 0.8) ($spacing-unit * 1.25); // Adjusted for better fit with input height
+      height: 38px; // Match input height
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: $border-radius-small;
+      border: 1px solid $input-border-color;
+      background-color: $card-background-color;
+      cursor: pointer;
+      line-height: 1;
+      transition: border-color 0.2s;
+      &:hover {
+        border-color: darken($input-border-color, 15%);
+      }
+    }
+    .emoji-picker-wrapper {
+      position: absolute;
+      z-index: 100;
+      bottom: calc(100% + #{$spacing-unit});
+      left: 0;
+      box-shadow: $box-shadow-light;
+      border-radius: $border-radius-small;
+    }
+  }
+
+  .time-pickers-group {
+    label {
+      margin-bottom: $spacing-unit * 0.5;
+    }
+    .form-group.time-picker-item { // More specific selector
+      margin-bottom: $spacing-unit;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .days-selector-group {
+    label:first-of-type { // For the main "Select Days:" label
+      margin-bottom: $spacing-unit;
+    }
+    .days-checkboxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $spacing-unit;
+      // justify-content: center; // Optional: if you want them centered
+
+      .day-checkbox-label {
+        display: inline-flex;
+        align-items: center;
+        padding: ($spacing-unit * 0.75) ($spacing-unit * 1.25);
+        border: 1px solid $input-border-color;
+        border-radius: $border-radius-small;
+        cursor: pointer;
+        font-size: 13px;
+        color: $text-medium;
+        background-color: $card-background-color;
+        transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+        user-select: none;
+
+        input[type='checkbox'] {
+          margin-right: $spacing-unit * 0.75;
+          accent-color: $primary-color;
+          width: 16px; // Explicit size for checkbox
+          height: 16px;
+        }
+
+        &:hover {
+          border-color: darken($input-border-color, 15%);
+          background-color: lighten($background-color, 2%);
+        }
+        
+        // Style label when its checkbox is checked
+        // A simple way: target the label when the input *within it* is checked.
+        // This requires the input to be a direct child or use :has pseudo-class (not fully supported)
+        // Instead, we rely on accent-color for the checkbox itself.
+        // If more visual change is needed for the label, JS would add a class.
+      }
+    }
+  }
+
+  &__button {
+    width: 100%;
+    padding: ($spacing-unit * 1.5) ($spacing-unit * 2);
+    background-color: $primary-color;
+    color: $button-white-text-color;
+    border: none;
+    border-radius: $border-radius-small;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-unit;
+    margin-top: $spacing-unit * 2; 
+
+    &:hover {
+      background-color: $button-hover-background-color;
+      box-shadow: $box-shadow-light;
+    }
+
+    &:disabled {
+      background-color: lighten($primary-color, 15%);
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  }
+
+  .error-message {
+    color: $error-color;
+    background-color: lighten($error-color, 40%);
+    padding: $spacing-unit * 1.25;
+    border-radius: $border-radius-small;
+    margin-bottom: $spacing-unit * 2;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  &__skip-link {
+    margin-top: ($spacing-unit * 3);
+    font-size: 14px;
+    text-align: center;
+
+    .button-as-link {
+      background: none;
+      border: none;
+      color: $text-link-color;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      padding: $spacing-unit 0; // Add some padding for easier clicking
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

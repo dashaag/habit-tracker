@@ -3,7 +3,7 @@
 set -e
 
 echo "Applying database migrations..."
-/usr/local/bin/alembic upgrade head
+alembic upgrade head
 echo "Migrations applied."
 
 # If no command is provided, default to running uvicorn.

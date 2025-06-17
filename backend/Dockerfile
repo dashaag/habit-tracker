@@ -3,16 +3,22 @@ FROM python:3.12.10
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-ENV UV_PROJECT_ENVIRONMENT="/usr/local/"
 RUN pip install uv==0.3.0
+
+# Create and activate a virtual environment
+ENV VIRTUAL_ENV=/opt/venv
+RUN python -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 WORKDIR /app
 
 COPY pyproject.toml uv.lock ./
+
+# Sync dependencies into the activated virtual environment
 RUN uv pip sync uv.lock
 
-# Debugging step to check for alembic executable
-RUN ls -l /usr/local/bin
+# Debugging step to check for alembic executable in the venv
+RUN ls -l /opt/venv/bin
 
 RUN addgroup --system app && adduser --system --ingroup app app
 

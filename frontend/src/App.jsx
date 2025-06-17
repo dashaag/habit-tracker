@@ -33,7 +33,7 @@ const AppContent = () => {
 
 function App() {
   return (
-    <Router>
+    <Router basename="/habit-tracker/">
       <AppContent /> {/* Use the new AppContent component */}
     </Router>
   );

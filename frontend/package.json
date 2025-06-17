@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/habit-tracker/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.6.0",

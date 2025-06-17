@@ -1,41 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Redirecting to Habit Tracker...</title>
-    <script type="text/javascript">
-      // GitHub Pages single-page app redirect script
-      // Based on https://github.com/rafgraph/spa-github-pages
-      // This script redirects to index.html with the original path and search query encoded.
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script type="text/javascript">
+    // Determine the base path. For a project at username.github.io/repoName,
+    // this would be /repoName.
+    // Your project is at /habit-tracker/
+    const basePath = '/habit-tracker'; // Make sure this matches your package.json homepage
 
-      // Set segmentCount to 1 for projects like username.github.io/repoName
-      // Set segmentCount to 0 for user/org pages like username.github.io
-      const segmentCount = 1; // For '/habit-tracker/' type paths
+    // Capture the full path including query string and hash that the user tried to access.
+    const attemptedPathAndQuery = window.location.pathname.substring(basePath.length) + 
+                                  window.location.search + 
+                                  window.location.hash;
 
-      const location = window.location;
-      const newPath = location.pathname.split('/').slice(0, 1 + segmentCount).join('/');
-      const page = location.pathname.slice(1).split('/').slice(segmentCount).join('/');
-      const queryString = location.search.slice(1);
+    // Store this path in sessionStorage.
+    sessionStorage.setItem('redirectPath', attemptedPathAndQuery);
 
-      let redirectUrl = location.protocol + '//' +
-                        location.hostname +
-                        (location.port ? ':' + location.port : '') +
-                        newPath + '/?p=/' + page.replace(/&/g, '~and~');
-
-      if (queryString) {
-        redirectUrl += '&q=' + queryString.replace(/&/g, '~and~');
-      }
-      redirectUrl += location.hash;
-
-      location.replace(redirectUrl);
-    </script>
-  </head>
-  <body>
-    If you are not redirected automatically, follow this <a id="redirect-link" href="#">link</a>.
-    <script>
-      document.getElementById('redirect-link').href = redirectUrl;
-    </script>
-    <!-- Padding to ensure file is >512 bytes for IE -->
-    <!-- ................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................. -->
-  </body>
+    // Redirect to the root of the deployment (index.html).
+    window.location.replace(basePath + '/');
+  </script>
+</head>
+<body>
+  <p>If you are not redirected automatically, please <a href="/habit-tracker/">click here</a>.</p>
+  <!-- Padding to ensure file is >512 bytes for IE -->
+  <!-- ................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................. -->
+</body>
 </html>

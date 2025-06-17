@@ -6,5 +6,5 @@ export const logout = () => {
   localStorage.removeItem('refreshToken');
   // Redirect to login page
   // Consider using navigate from react-router-dom if used within a component context
-  window.location.href = '/login'; 
+  window.location.href = '/habit-tracker/login'; 
 };

@@ -180,7 +180,7 @@ frontend/out/
 .nuxt
 .svelte-kit
 .vuepress/dist
-frontend/public/
+# frontend/public/ # This directory contains static assets like index.html and should not be ignored for CRA
 
 ### Caches ###
 .eslintcache

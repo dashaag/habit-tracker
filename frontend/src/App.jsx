@@ -12,7 +12,7 @@ import './App.scss';
 // Define a component that includes the Navbar and uses useLocation
 const AppContent = () => {
   const location = useLocation();
-  const noNavPaths = ['/login', '/register']; // Paths where Navbar should be hidden
+  const noNavPaths = ['/habit-tracker/login', '/habit-tracker/register']; // Paths where Navbar should be hidden
 
   return (
     <div className="App">

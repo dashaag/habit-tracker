@@ -11,6 +11,9 @@ WORKDIR /app
 COPY pyproject.toml uv.lock ./
 RUN uv sync
 
+# Debugging step to check for alembic executable
+RUN ls -l /usr/local/bin
+
 RUN addgroup --system app && adduser --system --ingroup app app
 
 COPY --chown=app:app alembic.ini ./

@@ -111,7 +111,7 @@ const HabitCard = ({ habit, progress, categories, onHabitLogAdded, onHabitDelete
         </div>
         <div className="habit-card__actions">
           {!isCompleted ? (
-            <button className="habit-card__action-button habit-card__add-log-button" onClick={openAddLogModal}>+</button>
+            <button className="habit-card__action-button habit-card__add-log-button" onClick={(e) => { e.stopPropagation(); openAddLogModal(); }}>+</button>
           ) : (
             <div className="habit-card__completed-indicator">✓</div>
           )}

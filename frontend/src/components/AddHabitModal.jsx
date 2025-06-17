@@ -111,9 +111,9 @@ const AddHabitModal = ({ isOpen, onClose, onHabitAdded, categories }) => {
         icon: selectedIcon,
         // color: selectedColor, // Color is now part of category, not habit directly
         frequency: frequencyType,
-        goal: frequencyType === 'daily' ? targetTimes : 1,
+        target_times: frequencyType === 'daily' ? parseInt(targetTimes, 10) : (frequencyType === 'weekly' ? selectedDays.length : 1),
         days_of_week: frequencyType === 'weekly' ? selectedDays.join(',') : null,
-        times_of_day: frequencyType === 'daily' ? selectedTimes.filter(t => t).join(',') : null, // Added
+        times_of_day: frequencyType === 'daily' ? selectedTimes.filter(t => t).join(',') : null,
       };
 
       await apiClient.post('/habits/', habitPayload);

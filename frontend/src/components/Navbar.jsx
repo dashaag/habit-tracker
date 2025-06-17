@@ -18,16 +18,12 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
-        <Link to="/" className="navbar-item">HabitTracker</Link>
+        <Link to="/home" className="navbar-item">HabitTracker</Link>
       </div>
       <div className="navbar-menu">
         <div className="navbar-end">
           {isLoggedIn ? (
             <>
-              {/* Logout button always visible when logged in */}
-              <button onClick={handleLogout} className="navbar-item button is-light">
-                Logout
-              </button>
               {/* Additional links for authenticated users, not shown on onboarding */}
               {location.pathname !== '/onboarding' && (
                 <> 
@@ -36,6 +32,10 @@ const Navbar = () => {
                   {/* Add other authenticated links here as needed */}
                 </>
               )}
+              {/* Logout button always visible when logged in */}
+              <button onClick={handleLogout} className="navbar-item button is-light">
+                Logout
+              </button>
             </>
           ) : (
             <>

@@ -94,13 +94,14 @@ $button-green: #ddeedd; // Muted green for Add Completion button
         font-size: 1rem;
         color: $text-dark;
 
-        // Basic styling to remove default browser appearance if possible
-        &::-webkit-calendar-picker-indicator,
-        &::-webkit-inner-spin-button,
-        &::-webkit-clear-button {
-          display: none;
-          -webkit-appearance: none;
-        }
+        // Allow native browser calendar picker, spin button, and clear button
+        // The following lines were removed to enable native pickers:
+        // &::-webkit-calendar-picker-indicator,
+        // &::-webkit-inner-spin-button,
+        // &::-webkit-clear-button {
+        //   display: none;
+        //   -webkit-appearance: none;
+        // }
       }
     }
   }

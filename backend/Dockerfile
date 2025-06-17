@@ -9,7 +9,7 @@ RUN pip install uv==0.3.0
 WORKDIR /app
 
 COPY pyproject.toml uv.lock ./
-RUN uv sync
+RUN uv pip sync uv.lock
 
 # Debugging step to check for alembic executable
 RUN ls -l /usr/local/bin

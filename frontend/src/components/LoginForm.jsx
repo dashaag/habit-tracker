@@ -29,7 +29,7 @@ const LoginForm = () => {
       });
       localStorage.setItem('accessToken', response.data.access_token);
       localStorage.setItem('refreshToken', response.data.refresh_token);
-      navigate(`${process.env.PUBLIC_URL}/onboarding`);
+      navigate('/onboarding');
     } catch (err) {
       setError(err.response?.data?.detail || 'Login failed. Please check your credentials.');
     }
